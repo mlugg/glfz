@@ -155,6 +155,10 @@ pub const Window = opaque {
     extern fn glfwSetFramebufferSizeCallback(self: *Window, callback: FramebufferSizeFn) FramebufferSizeFn;
     pub const FramebufferSizeFn = fn (*Window, c_int, c_int) callconv(.C) void;
 
+    pub const setMouseButtonCallback = glfwSetMouseButtonCallback;
+    extern fn glfwSetMouseButtonCallback(self: *Window, callback: MouseButtonFn) MouseButtonFn;
+    pub const MouseButtonFn = fn (*Window, glfw.MouseButton, glfw.MouseAction, glfw.Modifiers) callconv(.C) void;
+
     //// Vulkan ////
     /// Vulkan must be supported.
     /// The instance must have the required extensions enabled.

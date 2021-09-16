@@ -188,6 +188,35 @@ pub const KeyAction = enum(c_int) {
     release = c.GLFW_RELEASE,
     repeat = c.GLFW_REPEAT,
 };
+pub const MouseButton = enum(c_int) {
+    left = c.GLFW_MOUSE_BUTTON_1,
+    right = c.GLFW_MOUSE_BUTTON_2,
+    middle = c.GLFW_MOUSE_BUTTON_3,
+    mouse4 = c.GLFW_MOUSE_BUTTON_4,
+    mouse5 = c.GLFW_MOUSE_BUTTON_5,
+    mouse6 = c.GLFW_MOUSE_BUTTON_6,
+    mouse7 = c.GLFW_MOUSE_BUTTON_7,
+    mouse8 = c.GLFW_MOUSE_BUTTON_8,
+};
+pub const MouseAction = enum(c_int) {
+    press = c.GLFW_PRESS,
+    release = c.GLFW_RELEASE,
+};
+pub const ModKey = enum(c_int) {
+    shift = c.GLFW_MOD_SHIFT,
+    ctrl = c.GLFW_MOD_SHIFT,
+    alt = c.GLFW_MOD_ALT,
+    super = c.GLFW_MOD_SUPER,
+    caps_lock = c.GLFW_MOD_CAPS_LOCK,
+    num_lock = c.GLFW_MOD_NUM_LOCK,
+};
+pub const Modifiers = extern struct {
+    val: c_int,
+
+    pub fn has(self: Modifiers, m: ModKey) bool {
+        return self.val & @enumToInt(m) != 0;
+    }
+};
 
 //// Vulkan ////
 
