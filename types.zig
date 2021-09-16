@@ -146,6 +146,12 @@ pub const Window = opaque {
     }
     extern fn glfwGetKey(*Window, glfw.Key) glfw.KeyAction;
 
+    pub fn getCursorPos(self: *Window, x: *f64, y: *f64) void {
+        glfwGetCursorPos(self, x, y);
+        err.check();
+    }
+    extern fn glfwGetCursorPos(*Window, *f64, *f64) void;
+
     //// Callbacks ////
     pub const setWindowSizeCallback = glfwSetWindowSizeCallback;
     extern fn glfwSetWindowSizeCallback(self: *Window, callback: WindowSizeFn) WindowSizeFn;
